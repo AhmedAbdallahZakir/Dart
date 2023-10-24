@@ -32,6 +32,23 @@ class BankAcccounting {
       throw ArgumentError('Password is not correct ');
     }
   }
+
+  String changePssword(String oldPassword, String newPassword) {
+    if (oldPassword == this.account_password) {
+      oldPassword = newPassword;
+      return newPassword;
+    } else {
+      throw ArgumentError('Old password is wrong');
+    }
+  }
+
+  double checkBalance(String pass) {
+    if (this.account_password == pass) {
+      return this.balance;
+    } else {
+      throw ArgumentError('Old Password is wrong');
+    }
+  }
 }
 
 void main(List<String> args) {
@@ -40,6 +57,9 @@ void main(List<String> args) {
       account_holder_name: 'ahmed mahmoud',
       account_number: 245428524,
       account_password: '4114124');
+  //print(account.changePssword('4114124', '123456'));
+
+  print(account.checkBalance('4114124'));
 
   BankAcccounting acc = BankAcccounting(
       balance: 600.0,
